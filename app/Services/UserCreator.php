@@ -3,8 +3,9 @@
 namespace App\Services;
 
 use App\Models\User;
+use App\Services\Contracts\IModelCreator;
 
-class UserRepository
+class UserCreator implements IModelCreator
 {
     public function create(array $data): User
     {

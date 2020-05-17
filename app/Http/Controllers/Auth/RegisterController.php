@@ -4,7 +4,7 @@ use App\{
     Http\Controllers\Controller,
     Http\Requests\RegisterRequest,
     Services\Authenticatable,
-    Services\UserRepository
+    Services\UserCreator
 };
 use Illuminate\Http\JsonResponse;
 
@@ -14,7 +14,7 @@ class RegisterController extends Controller
     {
         return app()->make(Authenticatable::class)->provideToken(
             auth()->login(
-                $user = app()->make(UserRepository::class)->create($request->validated())
+                $user = app()->make(UserCreator::class)->create($request->validated())
             )
         );
     }
